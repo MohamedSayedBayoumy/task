@@ -4,7 +4,7 @@ import 'package:get/route_manager.dart';
 import '../../../common/routes/pages.dart';
 import '../../widgets/logo_widget.dart';
 import '../../widgets/rich_text_widget.dart';
-import '../../widgets/text_fileds_widget.dart';
+import '../../widgets/regiester_text_fileds_widget.dart';
 
 class RegisterScreen extends StatelessWidget {
   const RegisterScreen({super.key});
@@ -21,7 +21,7 @@ class RegisterScreen extends StatelessWidget {
               ),
             ),
             const SliverToBoxAdapter(
-              child: TextFieldsWidget(),
+              child: RegsiterTextFieldsWidget(),
             ),
             SliverFillRemaining(
               hasScrollBody: false,
@@ -29,7 +29,7 @@ class RegisterScreen extends StatelessWidget {
                 thinText: 'Already have an account? ',
                 boldText: 'login',
                 onTapBoldText: () {
-                  Get.toNamed(AppRoute.login);
+                  Get.offNamed(AppRoute.login);
                 },
               ),
             ),

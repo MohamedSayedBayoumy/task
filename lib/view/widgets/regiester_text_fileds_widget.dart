@@ -7,8 +7,8 @@ import '../../common/functions/media_query.dart';
 import '../../common/widgets/custom_button.dart';
 import '../../common/widgets/custom_text_field.dart';
 
-class TextFieldsWidget extends StatelessWidget {
-  const TextFieldsWidget({super.key});
+class RegsiterTextFieldsWidget extends StatelessWidget {
+  const RegsiterTextFieldsWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
