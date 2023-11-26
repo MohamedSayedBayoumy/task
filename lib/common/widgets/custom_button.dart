@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:task/common/constants/colors.dart';
 import 'package:task/common/constants/fonts/fonts.dart';
+import 'package:task/common/functions/media_query.dart';
 
 class CustomButton extends StatelessWidget {
-  final Size media;
   final String text;
   final Color? textColor;
   final Color? backgroundColor;
@@ -11,7 +11,6 @@ class CustomButton extends StatelessWidget {
 
   const CustomButton({
     super.key,
-    required this.media,
     required this.text,
     required this.onPressed,
     this.textColor,
@@ -21,8 +20,8 @@ class CustomButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: media.width,
-      height: media.height * .055,
+      width: Media.width(context),
+      height: Media.height(context, space: .055),
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
@@ -34,11 +33,13 @@ class CustomButton extends StatelessWidget {
           ),
           backgroundColor: backgroundColor ?? AppColors.mainColor,
         ),
-        child: Text(text,
-            style: Fonts.mainStyleBold.copyWith(
-              color: textColor ?? Colors.white,
-              fontSize: media.width * .05,
-            )),
+        child: Text(
+          text,
+          style: Fonts.mainStyleBold.copyWith(
+            color: textColor ?? Colors.white,
+            fontSize: Media.width(context, space: .05),
+          ),
+        ),
       ),
     );
   }
