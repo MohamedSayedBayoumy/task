@@ -21,7 +21,7 @@ class LoginScreen extends StatelessWidget {
                 titleScreen: "Login",
               ),
             ),
-            const SliverToBoxAdapter(
+            SliverToBoxAdapter(
               child: LoginTextFieldsWidget(),
             ),
             SliverFillRemaining(

@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:task/common/bindinng/auth_binding/login_binding.dart';
 import 'package:task/common/bindinng/auth_binding/register_binding.dart';
 import 'package:task/common/bindinng/services_binding.dart';
 import 'package:task/common/middlewares/auth_middleware.dart';
@@ -19,6 +20,7 @@ List<GetPage> routes = [
   GetPage(
     name: AppRoute.login,
     page: () => const LoginScreen(),
+    binding: LoginBinding(),
   ),
   GetPage(
     name: AppRoute.register,

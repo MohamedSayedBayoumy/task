@@ -7,6 +7,8 @@ import '../../common/constants/colors.dart';
 import '../../common/functions/media_query.dart';
 import '../../common/routes/pages.dart';
 import '../../common/widgets/custom_button.dart';
+import 'dart:convert';
+import 'package:dio/dio.dart';
 
 class OnBoardingScreen extends StatelessWidget {
   const OnBoardingScreen({super.key});
@@ -34,7 +36,36 @@ class OnBoardingScreen extends StatelessWidget {
                 ),
                 child: CustomButton(
                   text: "Login",
-                  onPressed: () {
+                  onPressed: () async {
+                    // var dio = Dio();
+
+                    // var headers = {
+                    //   'Accept': 'application/json',
+                    //   'Content-Type': 'application/json',
+                    // };
+
+                    // var data = {
+                    //   'email': 'DASDASDSA2@gmail.com',
+                    //   'password': '1221314ds',
+                    // };
+
+                    // try {
+                    //   var response = await dio.post(
+                    //     'http://testapi.alifouad91.com/api/login',
+                    //     data: FormData.fromMap(data),
+                    //     options: Options(headers: headers),
+                    //   );
+
+                    //   if (response.statusCode == 200) {
+                    //     print(response.data);
+                    //   } else {
+                    //     print(
+                    //         'Error: ${response.statusCode} - ${response.statusMessage}');
+                    //   }
+                    // } catch (e) {
+                    //   print('Error: $e');
+                    // }
+
                     Get.toNamed(AppRoute.login);
                   },
                 ),

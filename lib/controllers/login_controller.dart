@@ -1,52 +1,39 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:task/common/functions/alert_loading.dart';
 import 'package:task/common/functions/snackbar.dart';
 import 'package:task/common/routes/pages.dart';
 import 'package:task/common/services/setting_services.dart';
-import 'package:task/model/models/register_prameter_model.dart';
+import 'package:task/model/models/login_parameter_model.dart';
 
 import '../model/data/reposoity_pattern.dart';
 
-class RegisterController extends GetxController {
+class LoginController extends GetxController {
   GlobalKey<FormState> formstate = GlobalKey<FormState>();
 
-  final TextEditingController nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
-  final TextEditingController countryCodeController = TextEditingController();
-  final TextEditingController phoneController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  final TextEditingController confirmPasswordController =
-      TextEditingController();
 
   final AuthenticationUser authenticationUser =
       AuthenticationUserimplemention();
 
   bool showPassword = false;
-  bool showConfirmPassword = false;
 
-  showPassowrd(String to) {
-    if (to == "password") {
-      showPassword = !showPassword;
-    } else {
-      showConfirmPassword = !showConfirmPassword;
-    }
+  // LoginController(this.authenticationUser);
+
+  showPassowrd() {
+    showPassword = !showPassword;
     update();
   }
 
-  Future register() async {
+  Future login() async {
     if (formstate.currentState!.validate()) {
       showLoadingDialog();
 
-      final result = await authenticationUser.register(
-        registerParameterModel: RegisterParameterModel(
-          name: nameController.text,
-          email: emailController.text,
-          phone: phoneController.text,
-          password: passwordController.text,
-          countryCode: countryCodeController.text,
-          passwordConfirm: confirmPasswordController.text,
+      final result = await authenticationUser.login(
+        loginParameterModel: LoginParameterModel(
+          email: emailController.text.toString(),
+          password: passwordController.text.toString(),
         ),
       );
 
@@ -83,19 +70,9 @@ class RegisterController extends GetxController {
   }
 
   @override
-  void onInit() {
-    phoneController.clear();
-    super.onInit();
-  }
-
-  @override
   void onClose() {
-    nameController.dispose();
     emailController.dispose();
-    phoneController.dispose();
-    countryCodeController.dispose();
     passwordController.dispose();
-    confirmPasswordController.dispose();
     super.onClose();
   }
 }

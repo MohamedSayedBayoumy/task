@@ -1,11 +1,11 @@
-class RegisterModel {
+class UserModel {
   bool? success;
   String? message;
   Data? data;
 
-  RegisterModel({this.success, this.message, this.data});
+  UserModel({this.success, this.message, this.data});
 
-  RegisterModel.fromJson(Map<String, dynamic> json) {
+  UserModel.fromJson(Map<String, dynamic> json) {
     success = json['success'];
     message = json['message'];
     data = json['data'] != null ? Data.fromJson(json['data']) : null;
