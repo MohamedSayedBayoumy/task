@@ -1,9 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:task/common/constants/colors.dart';
+import 'package:task/common/constants/fonts/fonts.dart';
 
-showSnackbar({String? title, String? subTitle}) => Get.snackbar(
+showCustomSnackbar({
+  String? title,
+  String subTitle = "",
+  bool success = true,
+}) =>
+    Get.snackbar(
       title!,
-      subTitle!,
-      backgroundColor: const Color(0xff4dae50),
-      colorText: Colors.white,
+      subTitle,
+      titleText: Text(
+        title,
+        style: Fonts.titleSnakBarStyle,
+      ),
+      messageText: Text(
+        subTitle,
+        style: Fonts.subTitleSnakBarStyle,
+      ),
+      margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 40),
+      snackPosition: SnackPosition.BOTTOM,
+      backgroundColor: success ? AppColors.sucessColor : AppColors.failureColor,
     );

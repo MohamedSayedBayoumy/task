@@ -38,15 +38,11 @@ dependencies:
   get:
   dartz:
   dio:
-  hive:
-  hive_flutter:
-  get_it:
   device_preview: 
   intl_phone_field: 
+  shared_preferences:
 
 dev_dependencies:
-  hive_generator:
-  build_runner:
   flutter_test:
     sdk: flutter
 

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dio/dio.dart';
 import 'package:task/common/services/dio/dio_services.dart';
 import 'package:task/common/services/dio/end_piontes.dart';
@@ -18,15 +20,17 @@ class AuthenticationUserimplemention implements AuthenticationUser {
   Future<Either<FailureHandler, RegisterModel>> register(
       {RegisterParameterModel? registerParameterModel}) async {
     try {
+      log("DAATTTTTTTTTTTTTTTAAAAAA : ${registerParameterModel!.toFormData()}");
       final response = await DioServices.post(
         url: ApiEndpoints.regsiterEndpoints,
-        body: registerParameterModel!.toJson(),
+        contentType: Headers.jsonContentType,
+        body: registerParameterModel.toFormData(),
       );
 
       return Right(RegisterModel.fromJson(response.data));
-    } on DioExceptionType catch (e) {
+    } on DioException catch (e) {
       return left(
-        DioFailure.fromDioException(e),
+        DioFailure.fromDioException(dioType: e.type, exception: e),
       );
     }
   }

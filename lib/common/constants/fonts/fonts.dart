@@ -13,4 +13,16 @@ abstract class Fonts {
     color: AppColors.mainColor,
     fontFamily: AppFontFamily.fontBold,
   );
+
+  static TextStyle titleSnakBarStyle = const TextStyle(
+    fontFamily: AppFontFamily.fontBold,
+    color: Colors.white,
+    fontSize: 20,
+  );
+  
+  static TextStyle subTitleSnakBarStyle = const TextStyle(
+    fontFamily: AppFontFamily.fontRegular,
+    color: Colors.white,
+    fontSize: 15,
+  );
 }

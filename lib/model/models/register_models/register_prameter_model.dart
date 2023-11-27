@@ -1,3 +1,5 @@
+import 'package:dio/dio.dart';
+
 class RegisterParameterModel {
   String name;
   String email;
@@ -15,14 +17,16 @@ class RegisterParameterModel {
     required this.passwordConfirm,
   });
 
-  Map<String, dynamic> toJson() {
-    return {
+  FormData toFormData() {
+    return FormData.fromMap({
       'name': name,
       'email': email,
       'phone': phone,
       'password': password,
       'country_code': countryCode,
       'password_confirm': passwordConfirm,
-    };
+    });
   }
+
+ 
 }

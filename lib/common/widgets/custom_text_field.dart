@@ -56,10 +56,10 @@ class CustomTextField extends StatelessWidget {
               ? IconButton(
                   onPressed: onPressedSuffixIcon,
                   icon: Icon(
-                    obscureText == true
+                    obscureText == false
                         ? Icons.visibility
                         : Icons.visibility_off_sharp,
-                    color: obscureText == true
+                    color: obscureText == false
                         ? AppColors.secondColor
                         : AppColors.mainColor,
                   ),
@@ -71,6 +71,10 @@ class CustomTextField extends StatelessWidget {
           ),
           focusedBorder: TextFieldBorderStyle.focusedBorder,
           enabledBorder: TextFieldBorderStyle.enabledBorder,
+          focusedErrorBorder: TextFieldBorderStyle.enabledBorder
+              .copyWith(borderSide: BorderSide(color: Colors.red.shade700)),
+          errorBorder: TextFieldBorderStyle.enabledBorder
+              .copyWith(borderSide: BorderSide(color: Colors.red.shade700)),
         ),
       ),
     );
