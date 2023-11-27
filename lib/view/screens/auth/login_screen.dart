@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 
-import '../../../common/constants/colors.dart';
-import '../../../common/functions/media_query.dart';
-import '../../../common/routes/pages.dart';
-import '../../../common/widgets/custom_button.dart';
-import '../../widgets/login_text_fields_widgets.dart';
 import '../../widgets/logo_widget.dart';
+import '../../../common/routes/pages.dart';
 import '../../widgets/rich_text_widget.dart';
+import '../../widgets/login_text_fields_widgets.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
