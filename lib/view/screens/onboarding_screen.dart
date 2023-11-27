@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
-import 'package:task/view/widgets/logo_widget.dart';
-import 'package:task/view/widgets/rich_text_widget.dart';
 
 import '../../common/constants/colors.dart';
 import '../../common/functions/media_query.dart';
 import '../../common/routes/pages.dart';
 import '../../common/widgets/custom_button.dart';
-import 'dart:convert';
-import 'package:dio/dio.dart';
+import '../widgets/logo_widget.dart';
+import '../widgets/rich_text_widget.dart';
 
 class OnBoardingScreen extends StatelessWidget {
   const OnBoardingScreen({super.key});

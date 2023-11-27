@@ -13,7 +13,7 @@ import 'pages.dart';
 List<GetPage> routes = [
   GetPage(
     name: "/",
-    page: () => const OnBoardingScreen(),
+    page: () => const HomeScreen(),
     binding: ServicesAppBinding(),
     middlewares: [MiddleWareAuthentication()],
   ),
