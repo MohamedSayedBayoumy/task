@@ -1,6 +1,5 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:intl_phone_field/countries.dart';
 
 import '../common/functions/alert_loading.dart';
 import '../common/functions/snackbar.dart';
@@ -17,8 +16,6 @@ class UpDateInformationController extends GetxController {
 
   UpDateInformationController(this.authenticationUser);
 
-  String failureMessage = "";
-
   final TextEditingController nameController = TextEditingController();
 
   final TextEditingController emailController = TextEditingController();
@@ -31,9 +28,6 @@ class UpDateInformationController extends GetxController {
     if (formstate.currentState!.validate()) {
       showLoadingDialog();
 
-      print(
-          "========================= 222 ==================$countryCodeController");
-
       final result = await authenticationUser.updateUser(
         data: UserData(
           email: emailController.text,
@@ -43,6 +37,7 @@ class UpDateInformationController extends GetxController {
         ),
       );
       result.fold((l) {
+        Get.back();
         showCustomSnackbar(
           title: "Failed",
           subTitle: l.failureMessag,
@@ -72,5 +67,15 @@ class UpDateInformationController extends GetxController {
     countryCodeController.text = "+971";
     update();
     super.onInit();
+  }
+
+  @override
+  void onClose() {
+    nameController.dispose();
+    emailController.dispose();
+    phoneController.dispose();
+    countryCodeController.dispose();
+
+    super.onClose();
   }
 }

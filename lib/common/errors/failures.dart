@@ -2,13 +2,21 @@ import 'package:dio/dio.dart';
 
 abstract class FailureHandler {
   final String failureMessag;
+  final List<dynamic>? listOfFailures;
   final DioException modelExpation;
 
-  FailureHandler({required this.modelExpation, required this.failureMessag});
+  FailureHandler({
+    this.listOfFailures = const [],
+    required this.modelExpation,
+    required this.failureMessag,
+  });
 }
 
 class DioFailure extends FailureHandler {
-  DioFailure({required super.failureMessag, required super.modelExpation});
+  DioFailure(
+      {required super.failureMessag,
+      required super.modelExpation,
+      super.listOfFailures});
 
   factory DioFailure.fromDioException(
       {DioExceptionType? dioType, DioException? exception}) {
@@ -34,6 +42,7 @@ class DioFailure extends FailureHandler {
       case DioExceptionType.badResponse:
         return DioFailure(
           failureMessag: exception!.response!.data["message"].toString(),
+          listOfFailures: exception.response!.data["data"],
           modelExpation: exception,
         );
       case DioExceptionType.cancel:

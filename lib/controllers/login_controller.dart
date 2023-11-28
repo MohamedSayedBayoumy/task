@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:task/common/functions/alert_loading.dart';
-import 'package:task/common/functions/snackbar.dart';
-import 'package:task/common/routes/pages.dart';
-import 'package:task/common/services/setting_services.dart';
-import 'package:task/model/models/login_parameter_model.dart';
-import 'package:task/model/models/set_user_parameter_model.dart';
 
+import '../common/functions/alert_loading.dart';
+import '../common/functions/snackbar.dart';
+import '../common/routes/pages.dart';
+import '../common/services/setting_services.dart';
 import '../model/data/reposoity_pattern.dart';
+import '../model/models/login_parameter_model.dart';
+import '../model/models/set_user_parameter_model.dart';
 
 class LoginController extends GetxController {
   GlobalKey<FormState> formstate = GlobalKey<FormState>();
@@ -38,17 +38,19 @@ class LoginController extends GetxController {
       );
 
       result.fold((l) {
-        snackbar(
+        Get.back();
+        showCustomSnackbar(
           title: "Failed",
           subTitle: l.failureMessag,
-          isSuccess: false,
+          success: false,
         );
+
         update();
       }, (r) {
-        snackbar(
+        showCustomSnackbar(
           title: "Success",
           subTitle: r.message!,
-          isSuccess: true,
+          success: true,
         );
         Services.setUser(
           setUserParameterModel: SetUserParameterModel(
@@ -65,14 +67,7 @@ class LoginController extends GetxController {
     }
   }
 
-  snackbar({String? title, String? subTitle, bool? isSuccess}) {
-    Get.back();
-    showCustomSnackbar(
-      title: title,
-      subTitle: subTitle!,
-      success: isSuccess!,
-    );
-  }
+ 
 
   @override
   void onClose() {

@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:task/controllers/update_controller.dart';
 
 import '../../common/functions/media_query.dart';
 import '../../common/functions/validation/vailda.dart';
-import '../../common/routes/pages.dart';
 import '../../common/widgets/custom_appbar.dart';
 import '../../common/widgets/custom_button.dart';
 import '../../common/widgets/custom_text_field.dart';
 import '../../common/widgets/custom_text_phone_field.dart';
+import '../../controllers/update_controller.dart';
 
 class UpDateInformationScreen extends StatelessWidget {
   const UpDateInformationScreen({super.key});
@@ -41,6 +40,7 @@ class UpDateInformationScreen extends StatelessWidget {
                 CustomTextPhoneField(
                   codeController: controller.countryCodeController,
                   phoneController: controller.phoneController,
+                  
                 ),
                 CustomTextField(
                   controller: controller.emailController,

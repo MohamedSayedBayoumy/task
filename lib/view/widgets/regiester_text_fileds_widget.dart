@@ -1,15 +1,12 @@
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:intl_phone_field/intl_phone_field.dart';
-import 'package:task/common/constants/colors.dart';
-import 'package:task/common/constants/fonts/fonts.dart';
-import 'package:task/controllers/register_controller.dart';
+import 'package:flutter/material.dart';
 
-import '../../common/constants/text_field_style.dart';
+
 import '../../common/functions/media_query.dart';
-import '../../common/functions/validation/vailda.dart';
 import '../../common/widgets/custom_button.dart';
+import '../../controllers/register_controller.dart';
 import '../../common/widgets/custom_text_field.dart';
+import '../../common/functions/validation/vailda.dart';
 import '../../common/widgets/custom_text_phone_field.dart';
 
 class RegsiterTextFieldsWidget extends StatelessWidget {

@@ -2,10 +2,10 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
-import 'package:task/model/data/reposoity_pattern.dart';
-import 'package:task/model/models/user_model.dart';
 
 import '../common/eunm.dart';
+import '../model/data/reposoity_pattern.dart';
+import '../model/models/user_model.dart';
 
 class HomeController extends GetxController {
   Status status = Status.loading;
