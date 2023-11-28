@@ -7,12 +7,14 @@ import '../constants/text_field_style.dart';
 import '../functions/media_query.dart';
 
 class CustomTextPhoneField extends StatelessWidget {
-  final TextEditingController phoneController;
-  final TextEditingController codeController;
+  final TextEditingController? phoneController,
+      codeCountryController,
+      codeCountryNumberController;
   const CustomTextPhoneField({
     super.key,
     required this.phoneController,
-    required this.codeController,
+    this.codeCountryController,
+    this.codeCountryNumberController,
   });
 
   @override
@@ -22,6 +24,11 @@ class CustomTextPhoneField extends StatelessWidget {
           EdgeInsets.symmetric(vertical: Media.height(context, space: .015)),
       child: IntlPhoneField(
         controller: phoneController,
+        onCountryChanged: (value) {
+          codeCountryController!.text = value.code;
+          codeCountryNumberController!.text = value.dialCode;
+        },
+        initialCountryCode: codeCountryController?.text ?? 'AE',
         textInputAction: TextInputAction.next,
         dropdownIcon: Icon(
           Icons.keyboard_arrow_down_rounded,
@@ -43,11 +50,7 @@ class CustomTextPhoneField extends StatelessWidget {
               .copyWith(borderSide: BorderSide(color: Colors.red.shade700)),
           focusedBorder: TextFieldBorderStyle.focusedBorder,
         ),
-        initialCountryCode: 'AE',
         style: Fonts.mainStyleBold,
-        onCountryChanged: (value) {
-          codeController.text = "+${value.dialCode.toString()}";
-        },
       ),
     );
   }

@@ -1,7 +1,6 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 
-
 import '../../common/functions/media_query.dart';
 import '../../common/widgets/custom_button.dart';
 import '../../controllers/register_controller.dart';
@@ -33,11 +32,13 @@ class RegsiterTextFieldsWidget extends StatelessWidget {
                 hinText: "Full Name",
               ),
               CustomTextPhoneField(
-                codeController: controller.countryCodeController!,
+                codeCountryController: controller.countryCodeController!,
+                codeCountryNumberController: controller.countryNumberCodeController!,
                 phoneController: controller.phoneController,
               ),
               CustomTextField(
                 controller: controller.emailController,
+                keyboardType: TextInputType.emailAddress,
                 hinText: "Email Address",
                 valid: (value) {
                   return Validation.emailFormat(value.toString());

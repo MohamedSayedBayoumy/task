@@ -38,9 +38,8 @@ class UpDateInformationScreen extends StatelessWidget {
                   },
                 ),
                 CustomTextPhoneField(
-                  codeController: controller.countryCodeController,
                   phoneController: controller.phoneController,
-                 
+                  codeCountryController: controller.countryCodeController , 
                 ),
                 CustomTextField(
                   controller: controller.emailController,

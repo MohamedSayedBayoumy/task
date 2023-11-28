@@ -31,8 +31,7 @@ class LoadedHomeScreenWidget extends StatelessWidget {
                     icon: Icons.person_outline_outlined,
                   ),
                   RowDataWidget(
-                    data:
-                        "${controller.userModel.data!.countryCode!} ${controller.userModel.data!.phone!}",
+                    data: controller.userModel.data!.phone!,
                     icon: Icons.phone_android_rounded,
                   ),
                   RowDataWidget(

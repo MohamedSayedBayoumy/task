@@ -63,7 +63,7 @@ class UpDateInformationController extends GetxController {
   void onInit() {
     nameController.text = user.data!.name!;
     emailController.text = user.data!.email!;
-    phoneController.text = user.data!.phone!;
+    phoneController.text = user.data!.phone!.split(" ")[1].trim();
     countryCodeController.text = user.data!.countryCode!;
     update();
     super.onInit();

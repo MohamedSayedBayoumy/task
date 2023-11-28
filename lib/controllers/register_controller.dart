@@ -15,11 +15,13 @@ class RegisterController extends GetxController {
   final TextEditingController nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController? countryCodeController = TextEditingController();
+  final TextEditingController? countryNumberCodeController =
+      TextEditingController();
   final TextEditingController phoneController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController confirmPasswordController =
       TextEditingController();
-
+  final String codeNumber = "";
   final AuthenticationUser authenticationUser;
 
   bool showPassword = false;
@@ -39,14 +41,18 @@ class RegisterController extends GetxController {
   Future register() async {
     if (formstate.currentState!.validate()) {
       showLoadingDialog();
+      // ignore: avoid_print
+      print(
+          "${countryNumberCodeController?.text.toString()} ${phoneController.text} ${countryCodeController!.text.toString()}");
 
       final result = await authenticationUser.register(
         registerParameterModel: RegisterParameterModel(
           name: nameController.text,
           email: emailController.text,
-          phone: phoneController.text,
+          phone:
+              "+${countryNumberCodeController?.text.toString()} ${phoneController.text}",
           password: passwordController.text,
-          countryCode: countryCodeController?.text.toString() ?? "+971",
+          countryCode: countryCodeController!.text.toString(),
           passwordConfirm: confirmPasswordController.text,
         ),
       );
@@ -82,7 +88,8 @@ class RegisterController extends GetxController {
   @override
   void onInit() {
     phoneController.clear();
-    countryCodeController!.text = "+971";
+    countryCodeController!.text = "AE";
+    update();
     super.onInit();
   }
 
@@ -94,6 +101,7 @@ class RegisterController extends GetxController {
     countryCodeController!.dispose();
     passwordController.dispose();
     confirmPasswordController.dispose();
+    countryNumberCodeController!.dispose();
     super.onClose();
   }
 }
