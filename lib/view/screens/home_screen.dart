@@ -56,7 +56,8 @@ class HomeScreen extends StatelessWidget {
                       ListTileWidget(
                         title: "Update Information",
                         onTap: () {
-                          Get.toNamed(AppRoute.update , arguments: controller.userModel);
+                          Get.toNamed(AppRoute.update,
+                              arguments: controller.userModel);
                         },
                       ),
                       ListTileWidget(
@@ -67,11 +68,15 @@ class HomeScreen extends StatelessWidget {
                       ),
                       ListTileWidget(
                         title: "Delete Account",
-                        onTap: () {},
+                        onTap: () {
+                          controller.deleteUser();
+                        },
                       ),
                       ListTileWidget(
                         title: "Logout",
-                        onTap: () {},
+                        onTap: () {
+                          controller.logout();
+                        },
                       ),
                     ],
                   );

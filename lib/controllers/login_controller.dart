@@ -47,6 +47,7 @@ class LoginController extends GetxController {
 
         update();
       }, (r) {
+        Get.back();
         showCustomSnackbar(
           title: "Success",
           subTitle: r.message!,
@@ -66,8 +67,6 @@ class LoginController extends GetxController {
       });
     }
   }
-
- 
 
   @override
   void onClose() {

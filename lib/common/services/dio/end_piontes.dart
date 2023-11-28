@@ -6,4 +6,5 @@ abstract class ApiEndpoints {
   static const getUserEndpoint = "$baseUrl/users";
   static const updateEndpoint = "$baseUrl/user/update";
   static const changePasswordEndpoint = "$baseUrl/user/changepassword";
+  static const deleteEndpoint = "$baseUrl/user/delete";
 }

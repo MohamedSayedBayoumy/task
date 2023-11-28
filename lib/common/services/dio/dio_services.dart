@@ -26,4 +26,16 @@ abstract class DioServices {
         }));
     return response;
   }
+
+  static Future<Response> delete(
+      {String? url, FormData? body, String? token, String? contentType}) async {
+    final response = await dio.delete(url!,
+        data: body,
+        options: Options(headers: {
+          "Authorization": "Bearer $token",
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        }));
+    return response;
+  }
 }

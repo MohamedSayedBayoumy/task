@@ -9,7 +9,7 @@ class MiddleWareAuthentication extends GetMiddleware {
 
   @override
   RouteSettings? redirect(String? route) {
-    if (Services.sharedPreferences.getString("token") != null) {
+    if (Services.sharedPreferences.getString("token") != "") {
       return const RouteSettings(name: AppRoute.home);
     }
     return null;

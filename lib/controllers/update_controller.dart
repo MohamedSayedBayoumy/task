@@ -64,7 +64,7 @@ class UpDateInformationController extends GetxController {
     nameController.text = user.name!;
     emailController.text = user.email!;
     phoneController.text = user.phone!;
-    countryCodeController.text = "+971";
+    countryCodeController.text = user.countryCode!;
     update();
     super.onInit();
   }
