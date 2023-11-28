@@ -9,12 +9,10 @@ import '../functions/media_query.dart';
 class CustomTextPhoneField extends StatelessWidget {
   final TextEditingController phoneController;
   final TextEditingController codeController;
-  final String? initialCountryCode;
   const CustomTextPhoneField({
     super.key,
     required this.phoneController,
     required this.codeController,
-    this.initialCountryCode,
   });
 
   @override

@@ -1,10 +1,9 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:task/common/constants/colors.dart';
 
-import 'package:task/common/functions/media_query.dart';
 
+import '../../common/constants/colors.dart';
 import '../../common/constants/fonts/fonts.dart';
+import '../../common/functions/media_query.dart';
 
 class RowDataWidget extends StatelessWidget {
   final String data;

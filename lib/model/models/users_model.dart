@@ -1,11 +1,11 @@
-class UsersModel {
+class UpdateUserModel {
   bool? success;
   String? message;
   List<Data>? data;
 
-  UsersModel({this.success, this.message, this.data});
+  UpdateUserModel({this.success, this.message, this.data});
 
-  UsersModel.fromJson(Map<String, dynamic> json) {
+  UpdateUserModel.fromJson(Map<String, dynamic> json) {
     success = json['success'];
     message = json['message'];
     if (json['data'] != null) {

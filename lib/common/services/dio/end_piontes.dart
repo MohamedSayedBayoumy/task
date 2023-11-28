@@ -3,7 +3,7 @@ abstract class ApiEndpoints {
 
   static const regsiterEndpoint = "$baseUrl/user/register";
   static const loginEndpoint = "$baseUrl/login";
-  static const getUserEndpoint = "$baseUrl/users";
+  static const getUserEndpoint = "$baseUrl/user";
   static const updateEndpoint = "$baseUrl/user/update";
   static const changePasswordEndpoint = "$baseUrl/user/changepassword";
   static const deleteEndpoint = "$baseUrl/user/delete";

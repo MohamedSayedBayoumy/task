@@ -20,16 +20,16 @@ abstract class AuthenticationUser {
   Future<Either<FailureHandler, UserModel>> login(
       {LoginParameterModel? loginParameterModel});
 
-  Future<Either<FailureHandler, UserData>> getUser({String? token});
+  Future<Either<FailureHandler, UserModel>> getUser({String? token});
 
   Future<Either<FailureHandler, UserModel>> updateUser(
       {required UserData data});
 
-  Future<Either<FailureHandler, UsersModel>> changePassword({
+  Future<Either<FailureHandler, UpdateUserModel>> changePassword({
     required ChangePasswordParameterModel changePasswordParameterModel,
   });
 
-  Future<Either<FailureHandler, UsersModel>> deleteAccount({
+  Future<Either<FailureHandler, UpdateUserModel>> deleteAccount({
     String token,
   });
 }
@@ -70,22 +70,15 @@ class AuthenticationUserimplemention implements AuthenticationUser {
   }
 
   @override
-  Future<Either<FailureHandler, UserData>> getUser({String? token}) async {
+  Future<Either<FailureHandler, UserModel>> getUser({String? token}) async {
+    final user = Services.getUser();
     try {
       final response = await DioServices.get(
-        url: ApiEndpoints.getUserEndpoint,
-        token: Services.getUser().token,
+        url: "${ApiEndpoints.getUserEndpoint}/${user.id}",
+        token: user.token,
       );
 
-      final convertData = UsersModel.fromJson(response.data);
-      final filiterUser = convertData.data!
-          .where(
-            (element) => element.id == Services.getUser().id,
-          )
-          .map((e) => e)
-          .toList();
-
-      return Right(UserData.fromJson(filiterUser[0].toJson()));
+      return Right(UserModel.fromJson(response.data));
     } on DioException catch (e) {
       return left(
         DioFailure.fromDioException(dioType: e.type, exception: e),
@@ -111,7 +104,7 @@ class AuthenticationUserimplemention implements AuthenticationUser {
   }
 
   @override
-  Future<Either<FailureHandler, UsersModel>> changePassword(
+  Future<Either<FailureHandler, UpdateUserModel>> changePassword(
       {required ChangePasswordParameterModel
           changePasswordParameterModel}) async {
     try {
@@ -121,7 +114,7 @@ class AuthenticationUserimplemention implements AuthenticationUser {
         token: Services.getUser().token,
       );
 
-      return Right(UsersModel.fromJson(response.data));
+      return Right(UpdateUserModel.fromJson(response.data));
     } on DioException catch (e) {
       return left(
         DioFailure.fromDioException(dioType: e.type, exception: e),
@@ -130,7 +123,7 @@ class AuthenticationUserimplemention implements AuthenticationUser {
   }
 
   @override
-  Future<Either<FailureHandler, UsersModel>> deleteAccount(
+  Future<Either<FailureHandler, UpdateUserModel>> deleteAccount(
       {String? token}) async {
     try {
       final response = await DioServices.delete(
@@ -141,7 +134,7 @@ class AuthenticationUserimplemention implements AuthenticationUser {
       Services.setUser(
           setUserParameterModel: SetUserParameterModel(token: "", id: ""));
 
-      return Right(UsersModel.fromJson(response.data));
+      return Right(UpdateUserModel.fromJson(response.data));
     } on DioException catch (e) {
       return left(
         DioFailure.fromDioException(dioType: e.type, exception: e),

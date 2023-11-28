@@ -1,10 +1,10 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:task/common/routes/pages.dart';
-import 'package:task/common/services/setting_services.dart';
+
+import '../routes/pages.dart';
+import '../services/setting_services.dart';
 
 class MiddleWareAuthentication extends GetMiddleware {
-
   Services myServices = Get.find();
 
   @override

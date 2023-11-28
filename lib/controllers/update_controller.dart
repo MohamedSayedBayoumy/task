@@ -8,7 +8,7 @@ import '../model/data/reposoity_pattern.dart';
 import '../model/models/user_model.dart';
 
 class UpDateInformationController extends GetxController {
-  UserData user = Get.arguments;
+  UserModel user = Get.arguments;
 
   GlobalKey<FormState> formstate = GlobalKey<FormState>();
 
@@ -61,10 +61,10 @@ class UpDateInformationController extends GetxController {
 
   @override
   void onInit() {
-    nameController.text = user.name!;
-    emailController.text = user.email!;
-    phoneController.text = user.phone!;
-    countryCodeController.text = user.countryCode!;
+    nameController.text = user.data!.name!;
+    emailController.text = user.data!.email!;
+    phoneController.text = user.data!.phone!;
+    countryCodeController.text = user.data!.countryCode!;
     update();
     super.onInit();
   }

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:task/common/constants/colors.dart';
-import 'package:task/common/constants/fonts/fonts.dart';
+
+import '../constants/colors.dart';
+import '../constants/fonts/fonts.dart';
 
 showCustomSnackbar({
   String? title,

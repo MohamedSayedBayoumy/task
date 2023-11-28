@@ -1,11 +1,10 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first, unnecessary_overrides
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:task/common/routes/pages.dart';
 
 import '../common/eunm.dart';
 import '../common/functions/alert_loading.dart';
 import '../common/functions/snackbar.dart';
+import '../common/routes/pages.dart';
 import '../common/services/setting_services.dart';
 import '../model/data/reposoity_pattern.dart';
 import '../model/models/set_user_parameter_model.dart';
@@ -16,7 +15,7 @@ class HomeController extends GetxController {
 
   final AuthenticationUser authenticationUser;
 
-  UserData userModel = UserData();
+  UserModel userModel = UserModel();
 
   HomeController(this.authenticationUser);
 
@@ -31,6 +30,9 @@ class HomeController extends GetxController {
   }
 
   Future getUser() async {
+    status = Status.loading;
+    update();
+
     final result = await authenticationUser.getUser();
     result.fold((l) {
       status = Status.failure;
@@ -39,7 +41,6 @@ class HomeController extends GetxController {
     }, (r) {
       status = Status.loaded;
       userModel = r;
-      print(r.toJson());
       update();
     });
   }
