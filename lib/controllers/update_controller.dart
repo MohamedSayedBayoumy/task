@@ -35,7 +35,7 @@ class UpDateInformationController extends GetxController {
         data: UserData(
           email: emailController.text,
           name: nameController.text,
-          phone: "+${countryCodeNumberController.text} ${phoneController.text}",
+          phone: "${countryCodeNumberController.text} ${phoneController.text}",
           countryCode: countryCodeController.text,
         ),
       );
@@ -66,8 +66,9 @@ class UpDateInformationController extends GetxController {
   void onInit() {
     nameController.text = user.data!.name!;
     emailController.text = user.data!.email!;
-    phoneController.text = user.data!.phone!.split(" ")[1].trim();
     countryCodeController.text = user.data!.countryCode!;
+    phoneController.text = user.data!.phone!.split(" ")[1].trim();
+    countryCodeNumberController.text = user.data!.phone!.split(" ")[0].trim();
     update();
     super.onInit();
   }

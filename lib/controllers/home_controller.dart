@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:task/common/constants/values/init_values.dart';
 
 import '../common/eunm.dart';
 import '../common/functions/alert_loading.dart';
@@ -36,7 +37,19 @@ class HomeController extends GetxController {
     final result = await authenticationUser.getUser();
     result.fold((l) {
       status = Status.failure;
-      failureMessage = l.failureMessag;
+      if (l.failureMessag == InitalValues.unAuthUser) {
+        showCustomSnackbar(
+          title: "Failed",
+          subTitle: "${l.failureMessag} , You need to login again",
+          success: false,
+          durationSeconds: 5,
+        );
+        Services.setUser(
+            setUserParameterModel: SetUserParameterModel(token: "", id: ""));
+        Get.offAllNamed(AppRoute.onBoarding);
+      } else {
+        failureMessage = l.failureMessag;
+      }
       update();
     }, (r) {
       status = Status.loaded;

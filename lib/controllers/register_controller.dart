@@ -51,7 +51,7 @@ class RegisterController extends GetxController {
           name: nameController.text,
           email: emailController.text,
           phone:
-              "+${countryNumberCodeController?.text.toString()} ${phoneController.text}",
+              "${countryNumberCodeController?.text.toString()} ${phoneController.text}",
           password: passwordController.text,
           countryCode: countryCodeController!.text.toString(),
           passwordConfirm: confirmPasswordController.text,

@@ -29,7 +29,7 @@ class CustomTextPhoneField extends StatelessWidget {
         controller: phoneController,
         onCountryChanged: (value) {
           codeCountryController!.text = value.code;
-          codeCountryNumberController!.text = value.dialCode;
+          codeCountryNumberController!.text = "+${value.dialCode}";
         },
         initialCountryCode: codeCountryController?.text,
         onChanged: onChanged,
