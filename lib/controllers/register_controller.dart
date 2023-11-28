@@ -82,6 +82,7 @@ class RegisterController extends GetxController {
   @override
   void onInit() {
     phoneController.clear();
+    countryCodeController!.text = "+971";
     super.onInit();
   }
 

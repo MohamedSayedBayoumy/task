@@ -10,6 +10,7 @@ import '../../common/functions/media_query.dart';
 import '../../common/functions/validation/vailda.dart';
 import '../../common/widgets/custom_button.dart';
 import '../../common/widgets/custom_text_field.dart';
+import '../../common/widgets/custom_text_phone_field.dart';
 
 class RegsiterTextFieldsWidget extends StatelessWidget {
   const RegsiterTextFieldsWidget({super.key});
@@ -34,40 +35,9 @@ class RegsiterTextFieldsWidget extends StatelessWidget {
                 },
                 hinText: "Full Name",
               ),
-              Padding(
-                padding: EdgeInsets.symmetric(
-                    vertical: Media.height(context, space: .015)),
-                child: IntlPhoneField(
-                  controller: controller.phoneController,
-                  textInputAction: TextInputAction.next,
-                  dropdownIcon: Icon(
-                    Icons.keyboard_arrow_down_rounded,
-                    color: AppColors.mainColor,
-                  ),
-                  validator: (phone) {
-                    if (phone!.number.isEmpty) {
-                      return "Invalid mobile number";
-                    }
-                    return "Invalid mobile number";
-                  },
-                  decoration: InputDecoration(
-                    counterText: "",
-                    hintText: "55994435",
-                    focusedErrorBorder: TextFieldBorderStyle.enabledBorder
-                        .copyWith(
-                            borderSide: BorderSide(color: Colors.red.shade700)),
-                    enabledBorder: TextFieldBorderStyle.enabledBorder,
-                    errorBorder: TextFieldBorderStyle.enabledBorder.copyWith(
-                        borderSide: BorderSide(color: Colors.red.shade700)),
-                    focusedBorder: TextFieldBorderStyle.focusedBorder,
-                  ),
-                  initialCountryCode: 'AE',
-                  style: Fonts.mainStyleBold,
-                  onCountryChanged: (value) {
-                    controller.countryCodeController!.text =
-                        "+${value.dialCode.toString()}";
-                  },
-                ),
+              CustomTextPhoneField(
+                codeController: controller.countryCodeController!,
+                phoneController: controller.phoneController,
               ),
               CustomTextField(
                 controller: controller.emailController,

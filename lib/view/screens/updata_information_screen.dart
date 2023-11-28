@@ -8,6 +8,7 @@ import '../../common/routes/pages.dart';
 import '../../common/widgets/custom_appbar.dart';
 import '../../common/widgets/custom_button.dart';
 import '../../common/widgets/custom_text_field.dart';
+import '../../common/widgets/custom_text_phone_field.dart';
 
 class UpDateInformationScreen extends StatelessWidget {
   const UpDateInformationScreen({super.key});
@@ -37,12 +38,9 @@ class UpDateInformationScreen extends StatelessWidget {
                     return Validation.isEmpty(value!);
                   },
                 ),
-                CustomTextField(
-                  controller: controller.phoneController,
-                  hinText: "Phone Number",
-                  valid: (value) {
-                    return Validation.isEmpty(value!);
-                  },
+                CustomTextPhoneField(
+                  codeController: controller.countryCodeController,
+                  phoneController: controller.phoneController,
                 ),
                 CustomTextField(
                   controller: controller.emailController,

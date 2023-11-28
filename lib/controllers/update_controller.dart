@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:intl_phone_field/countries.dart';
 
 import '../common/functions/alert_loading.dart';
 import '../common/functions/snackbar.dart';
@@ -29,6 +30,9 @@ class UpDateInformationController extends GetxController {
   Future updateUser() async {
     if (formstate.currentState!.validate()) {
       showLoadingDialog();
+
+      print(
+          "========================= 222 ==================$countryCodeController");
 
       final result = await authenticationUser.updateUser(
         data: UserData(
@@ -65,7 +69,8 @@ class UpDateInformationController extends GetxController {
     nameController.text = user.name!;
     emailController.text = user.email!;
     phoneController.text = user.phone!;
-
+    countryCodeController.text = "+971";
+    update();
     super.onInit();
   }
 }
