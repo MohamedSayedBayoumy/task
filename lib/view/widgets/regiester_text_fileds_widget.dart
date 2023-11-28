@@ -12,9 +12,7 @@ import '../../common/widgets/custom_button.dart';
 import '../../common/widgets/custom_text_field.dart';
 
 class RegsiterTextFieldsWidget extends StatelessWidget {
-  RegsiterTextFieldsWidget({super.key});
-
-  final RegisterController x = Get.find();
+  const RegsiterTextFieldsWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -64,7 +62,7 @@ class RegsiterTextFieldsWidget extends StatelessWidget {
                     focusedBorder: TextFieldBorderStyle.focusedBorder,
                   ),
                   initialCountryCode: 'AE',
-                  style: Fonts.mainStyleRegular,
+                  style: Fonts.mainStyleBold,
                   onCountryChanged: (value) {
                     controller.countryCodeController!.text =
                         "+${value.dialCode.toString()}";

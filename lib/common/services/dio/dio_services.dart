@@ -8,6 +8,7 @@ abstract class DioServices {
     final response = await dio.post(url!,
         data: body,
         options: Options(headers: {
+          "Authorization": "Bearer $token",
           'Accept': 'application/json',
           'Content-Type': 'application/json'
         }));

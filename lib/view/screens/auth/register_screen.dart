@@ -20,7 +20,7 @@ class RegisterScreen extends StatelessWidget {
                 titleScreen: "Register",
               ),
             ),
-            SliverToBoxAdapter(
+            const SliverToBoxAdapter(
               child: RegsiterTextFieldsWidget(),
             ),
             SliverFillRemaining(

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:get/route_manager.dart';
 
 import '../constants/colors.dart';
 import '../constants/fonts/fonts.dart';
@@ -8,11 +8,13 @@ import '../functions/media_query.dart';
 class CustomAppBar extends StatefulWidget implements PreferredSizeWidget {
   final String? title;
   final double? height;
+  final bool enableBackButton;
 
   const CustomAppBar({
     Key? key,
     this.title,
     this.height,
+    this.enableBackButton = false,
   }) : super(key: key);
 
   @override
@@ -37,10 +39,20 @@ class _CustomAppBarState extends State<CustomAppBar> {
       centerTitle: true,
       toolbarHeight: Media.height(context),
       backgroundColor: AppColors.mainColor,
-      leading: const SizedBox(),
-      // systemOverlayStyle: SystemUiOverlayStyle(
-      //   statusBarColor: AppColors.mainColor,
-      // ),
+      leading: widget.enableBackButton == false
+          ? null
+          : Padding(
+              padding: const EdgeInsets.only(top: 15),
+              child: IconButton(
+                onPressed: () {
+                  Get.back();
+                },
+                icon: const Icon(
+                  Icons.arrow_back_ios_new,
+                  size: 30,
+                ),
+              ),
+            ),
     );
   }
 }

@@ -52,17 +52,19 @@ class RegisterController extends GetxController {
       );
 
       result.fold((l) {
-        snackbar(
+        Get.back();
+        showCustomSnackbar(
           title: "Failed",
           subTitle: l.failureMessag,
-          isSuccess: false,
+          success: false,
         );
+
         update();
       }, (r) {
-        snackbar(
+        showCustomSnackbar(
           title: "Success",
           subTitle: r.message!,
-          isSuccess: true,
+          success: true,
         );
         Services.setUser(
           setUserParameterModel: SetUserParameterModel(
@@ -70,22 +72,11 @@ class RegisterController extends GetxController {
             id: r.data!.id.toString(),
           ),
         ).then((value) {
-          Future.delayed(const Duration(seconds: 1), () {
-            Get.offAllNamed(AppRoute.home);
-          });
+          Get.offAllNamed(AppRoute.home);
         });
         update();
       });
     }
-  }
-
-  snackbar({String? title, String? subTitle, bool? isSuccess}) {
-    Get.back();
-    showCustomSnackbar(
-      title: title,
-      subTitle: subTitle!,
-      success: isSuccess!,
-    );
   }
 
   @override

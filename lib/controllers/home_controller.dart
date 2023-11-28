@@ -35,6 +35,7 @@ class HomeController extends GetxController {
     }, (r) {
       status = Status.loaded;
       userModel = r;
+      print(r.toJson());
       update();
     });
   }

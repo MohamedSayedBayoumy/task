@@ -1,12 +1,12 @@
 import 'package:dio/dio.dart';
 
 class RegisterParameterModel {
-  String name;
-  String email;
-  String phone;
-  String password;
-  String countryCode;
-  String passwordConfirm;
+ final String name;
+ final String email;
+ final String phone;
+ final String password;
+ final String? countryCode;
+ final String passwordConfirm;
 
   RegisterParameterModel({
     required this.name,
@@ -23,7 +23,7 @@ class RegisterParameterModel {
       'email': email,
       'phone': phone,
       'password': password,
-      'country_code': countryCode,
+      'country_code': countryCode?.toString() ?? "+971",
       'password_confirm': passwordConfirm,
     });
   }

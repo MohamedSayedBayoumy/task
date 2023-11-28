@@ -19,6 +19,9 @@ abstract class AuthenticationUser {
       {LoginParameterModel? loginParameterModel});
 
   Future<Either<FailureHandler, UserData>> getUser({String? token});
+
+  Future<Either<FailureHandler, UserModel>> updateUser(
+      {required UserData data});
 }
 
 class AuthenticationUserimplemention implements AuthenticationUser {
@@ -74,6 +77,24 @@ class AuthenticationUserimplemention implements AuthenticationUser {
           .toList();
 
       return Right(UserData.fromJson(filiterUser[0].toJson()));
+    } on DioException catch (e) {
+      return left(
+        DioFailure.fromDioException(dioType: e.type, exception: e),
+      );
+    }
+  }
+
+  @override
+  Future<Either<FailureHandler, UserModel>> updateUser({UserData? data}) async {
+    final user = Services.getUser();
+    try {
+      final response = await DioServices.post(
+        url: ApiEndpoints.updateEndpoint,
+        body: data!.toFormData(),
+        token: user.token,
+      );
+
+      return Right(UserModel.fromJson(response.data));
     } on DioException catch (e) {
       return left(
         DioFailure.fromDioException(dioType: e.type, exception: e),

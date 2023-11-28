@@ -1,3 +1,5 @@
+import 'package:dio/dio.dart';
+
 class UserModel {
   bool? success;
   String? message;
@@ -60,5 +62,19 @@ class UserData {
     data['token'] = token ?? "";
     data['token_expiry'] = tokenExpiry ?? "";
     return data;
+  }
+
+  FormData toFormData() {
+    FormData formData = FormData.fromMap({
+      'id': id ?? '',
+      'name': name ?? '',
+      'countryCode': countryCode ?? '',
+      'phone': phone ?? '',
+      'email': email ?? '',
+      'token': token ?? '',
+      'tokenExpiry': tokenExpiry ?? '',
+    });
+
+    return formData;
   }
 }

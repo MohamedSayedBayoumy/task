@@ -2,13 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:task/common/constants/colors.dart';
 import 'package:task/common/eunm.dart';
+import 'package:task/common/routes/pages.dart';
 import 'package:task/controllers/home_controller.dart';
 
 import '../../common/constants/fonts/fonts.dart';
 import '../widgets/row_user_data.dart';
 import '../widgets/list_tile_widget.dart';
 import '../../common/functions/media_query.dart';
-import '../../common/widgets/custom_appbat.dart';
+import '../../common/widgets/custom_appbar.dart';
+import 'updata_information_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -54,7 +56,9 @@ class HomeScreen extends StatelessWidget {
                       ),
                       ListTileWidget(
                         title: "Update Information",
-                        onTap: () {},
+                        onTap: () {
+                          Get.toNamed(AppRoute.update , arguments: controller.userModel);
+                        },
                       ),
                       ListTileWidget(
                         title: "Change Password",

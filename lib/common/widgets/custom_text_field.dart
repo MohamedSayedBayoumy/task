@@ -40,8 +40,8 @@ class CustomTextField extends StatelessWidget {
         onTapOutside: (event) {
           FocusManager.instance.primaryFocus?.unfocus();
         },
-        style: Fonts.mainStyleRegular
-            .copyWith(fontSize: Media.width(context, space: .04)),
+        style: Fonts.mainStyleBold
+            .copyWith(fontSize: Media.width(context, space: .041)),
         obscureText: obscureText == false ? true : false,
         textInputAction: textInputAction ?? TextInputAction.next,
         textAlign: TextAlign.center,
@@ -65,6 +65,8 @@ class CustomTextField extends StatelessWidget {
                   ),
                 )
               : null,
+          errorStyle:
+              Fonts.mainStyleBold.copyWith(color: AppColors.failureColor),
           hintText: hinText,
           hintStyle: Fonts.mainStyleBold.copyWith(
             color: AppColors.secondColor,
