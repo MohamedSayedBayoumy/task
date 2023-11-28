@@ -10,4 +10,12 @@ abstract class Validation {
     }
     return null;
   }
+
+   static checkConformation({required String value  , required String compareWith}) {
+    if (value.isEmpty) return "This Filed is empty";
+    if (value != compareWith) {
+      return 'Invaild Password';
+    }
+    return null;
+  }
 }

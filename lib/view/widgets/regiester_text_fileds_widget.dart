@@ -61,7 +61,10 @@ class RegsiterTextFieldsWidget extends StatelessWidget {
                 hinText: "Confirm Password",
                 enableSuffixIcon: true,
                 valid: (value) {
-                  return Validation.isEmpty(value!);
+                  return Validation.checkConformation(
+                    value: value!,
+                    compareWith: controller.passwordController.text,
+                  );
                 },
                 obscureText: controller.showConfirmPassword,
                 onPressedSuffixIcon: () {
