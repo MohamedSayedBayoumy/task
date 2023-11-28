@@ -28,6 +28,7 @@ class LoginTextFieldsWidget extends StatelessWidget {
               CustomTextField(
                 controller: controller.emailController,
                 hinText: "Email Address",
+                keyboardType: TextInputType.emailAddress,
                 valid: (value) {
                   return Validation.emailFormat(value.toString());
                 },

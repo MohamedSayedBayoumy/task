@@ -60,7 +60,7 @@ class HomeController extends GetxController {
       showCustomSnackbar(
         title: "Success",
         subTitle: r.message!,
-        success: false,
+        success: true,
       );
 
       Get.toNamed(AppRoute.onBoarding);

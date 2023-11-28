@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../common/constants/values/init_values.dart';
 import '../common/functions/alert_loading.dart';
 import '../common/functions/snackbar.dart';
 import '../common/routes/pages.dart';
@@ -88,8 +89,8 @@ class RegisterController extends GetxController {
   @override
   void onInit() {
     phoneController.clear();
-    countryCodeController!.text = "AE";
-    update();
+    countryCodeController!.text = InitalValues.countryCode;
+    countryNumberCodeController?.text = InitalValues.countryCodeNumber;
     super.onInit();
   }
 
@@ -98,10 +99,10 @@ class RegisterController extends GetxController {
     nameController.dispose();
     emailController.dispose();
     phoneController.dispose();
-    countryCodeController!.dispose();
     passwordController.dispose();
-    confirmPasswordController.dispose();
+    countryCodeController!.dispose();
     countryNumberCodeController!.dispose();
+    confirmPasswordController.dispose();
     super.onClose();
   }
 }
