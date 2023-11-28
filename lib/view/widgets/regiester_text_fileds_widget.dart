@@ -33,7 +33,8 @@ class RegsiterTextFieldsWidget extends StatelessWidget {
               ),
               CustomTextPhoneField(
                 codeCountryController: controller.countryCodeController!,
-                codeCountryNumberController: controller.countryNumberCodeController!,
+                codeCountryNumberController:
+                    controller.countryNumberCodeController!,
                 phoneController: controller.phoneController,
               ),
               CustomTextField(
@@ -53,7 +54,7 @@ class RegsiterTextFieldsWidget extends StatelessWidget {
                 enableSuffixIcon: true,
                 obscureText: controller.showPassword,
                 onPressedSuffixIcon: () {
-                  controller.showPassowrd("password");
+                  controller.showPassowrd(to: controller.passwordController);
                 },
               ),
               CustomTextField(
@@ -68,7 +69,8 @@ class RegsiterTextFieldsWidget extends StatelessWidget {
                 },
                 obscureText: controller.showConfirmPassword,
                 onPressedSuffixIcon: () {
-                  controller.showPassowrd("confirmPassword");
+                  controller.showPassowrd(
+                      to: controller.confirmPasswordController);
                 },
               ),
               Padding(

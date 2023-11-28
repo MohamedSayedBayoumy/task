@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
+import 'package:intl_phone_field/phone_number.dart';
 
 import '../constants/colors.dart';
 import '../constants/fonts/fonts.dart';
@@ -10,11 +11,13 @@ class CustomTextPhoneField extends StatelessWidget {
   final TextEditingController? phoneController,
       codeCountryController,
       codeCountryNumberController;
+  final void Function(PhoneNumber)? onChanged;
   const CustomTextPhoneField({
     super.key,
     required this.phoneController,
     this.codeCountryController,
     this.codeCountryNumberController,
+    this.onChanged,
   });
 
   @override
@@ -28,7 +31,8 @@ class CustomTextPhoneField extends StatelessWidget {
           codeCountryController!.text = value.code;
           codeCountryNumberController!.text = value.dialCode;
         },
-        initialCountryCode: codeCountryController?.text ?? 'AE',
+        initialCountryCode: codeCountryController?.text,
+        onChanged: onChanged,
         textInputAction: TextInputAction.next,
         dropdownIcon: Icon(
           Icons.keyboard_arrow_down_rounded,

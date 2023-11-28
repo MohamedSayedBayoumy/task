@@ -7,9 +7,7 @@ import '../functions/media_query.dart';
 class CustomButton extends StatelessWidget {
   final String text;
   final double? width;
-  final Color? textColor;
-  final Color? borderColor;
-  final Color? backgroundColor;
+  final Color? textColor, borderColor, backgroundColor;
   final void Function()? onPressed;
 
   const CustomButton({

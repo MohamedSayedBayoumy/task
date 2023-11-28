@@ -30,8 +30,8 @@ class RegisterController extends GetxController {
 
   RegisterController(this.authenticationUser);
 
-  showPassowrd(String to) {
-    if (to == "password") {
+  showPassowrd({required TextEditingController to}) {
+    if (to == passwordController) {
       showPassword = !showPassword;
     } else {
       showConfirmPassword = !showConfirmPassword;
