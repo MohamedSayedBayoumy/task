@@ -4,8 +4,7 @@ import 'package:flutter/material.dart';
 import '../../common/constants/fonts/fonts.dart';
 
 class RichTextWidget extends StatelessWidget {
-  final String thinText;
-  final String boldText;
+  final String thinText , boldText;
   final void Function()? onTapBoldText;
   final bool enableUnderlineText;
 

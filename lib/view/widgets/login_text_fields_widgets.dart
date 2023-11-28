@@ -7,9 +7,7 @@ import '../../common/widgets/custom_text_field.dart';
 import '../../controllers/login_controller.dart';
 
 class LoginTextFieldsWidget extends StatelessWidget {
-  LoginTextFieldsWidget({super.key});
-
-  final LoginController x = Get.find();
+  const LoginTextFieldsWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
