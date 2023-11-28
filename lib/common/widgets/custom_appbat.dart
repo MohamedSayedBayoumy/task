@@ -38,9 +38,9 @@ class _CustomAppBarState extends State<CustomAppBar> {
       toolbarHeight: Media.height(context),
       backgroundColor: AppColors.mainColor,
       leading: const SizedBox(),
-      systemOverlayStyle: SystemUiOverlayStyle(
-        statusBarColor: AppColors.mainColor,
-      ),
+      // systemOverlayStyle: SystemUiOverlayStyle(
+      //   statusBarColor: AppColors.mainColor,
+      // ),
     );
   }
 }

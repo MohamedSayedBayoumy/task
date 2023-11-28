@@ -1,8 +1,9 @@
-import 'dart:convert';
 
-import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
+
+import '../../model/models/set_user_parameter_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
 
 class Services extends GetxService {
   static late SharedPreferences sharedPreferences;
@@ -13,23 +14,18 @@ class Services extends GetxService {
     return this;
   }
 
-  static Future setUserData(Map? user) async {
-    final encoding = json.encode(user);
-    if (kDebugMode) {
-      print("Set User :$encoding");
-    }
-    return Services.sharedPreferences.setString("user", encoding);
+  static setUser({
+    SetUserParameterModel? setUserParameterModel,
+  }) async {
+    Services.sharedPreferences.setString("token", setUserParameterModel!.token);
+    Services.sharedPreferences.setString("id", setUserParameterModel.id);
   }
 
-  static Future<Map> getUserData() async {
-    final getUser = Services.sharedPreferences.getString("user");
-    final user = json.decode(getUser.toString());
-
-    if (kDebugMode) {
-      print("get User: $user");
-    }
-
-    return user;
+  static SetUserParameterModel getUser() {
+    return SetUserParameterModel(
+      token: Services.sharedPreferences.getString("token").toString(),
+      id: Services.sharedPreferences.getString("id").toString(),
+    );
   }
 }
 

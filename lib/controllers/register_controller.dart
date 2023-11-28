@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:task/common/functions/alert_loading.dart';
@@ -8,23 +7,25 @@ import 'package:task/common/services/setting_services.dart';
 import 'package:task/model/models/register_prameter_model.dart';
 
 import '../model/data/reposoity_pattern.dart';
+import '../model/models/set_user_parameter_model.dart';
 
 class RegisterController extends GetxController {
   GlobalKey<FormState> formstate = GlobalKey<FormState>();
 
   final TextEditingController nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
-  final TextEditingController countryCodeController = TextEditingController();
+  final TextEditingController? countryCodeController = TextEditingController();
   final TextEditingController phoneController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController confirmPasswordController =
       TextEditingController();
 
-  final AuthenticationUser authenticationUser =
-      AuthenticationUserimplemention();
+  final AuthenticationUser authenticationUser;
 
   bool showPassword = false;
   bool showConfirmPassword = false;
+
+  RegisterController(this.authenticationUser);
 
   showPassowrd(String to) {
     if (to == "password") {
@@ -45,7 +46,7 @@ class RegisterController extends GetxController {
           email: emailController.text,
           phone: phoneController.text,
           password: passwordController.text,
-          countryCode: countryCodeController.text,
+          countryCode: countryCodeController?.text.toString() ?? "+971",
           passwordConfirm: confirmPasswordController.text,
         ),
       );
@@ -63,7 +64,12 @@ class RegisterController extends GetxController {
           subTitle: r.message!,
           isSuccess: true,
         );
-        Services.setUserData(r.toJson()).then((value) {
+        Services.setUser(
+          setUserParameterModel: SetUserParameterModel(
+            token: r.data!.token.toString(),
+            id: r.data!.id.toString(),
+          ),
+        ).then((value) {
           Future.delayed(const Duration(seconds: 1), () {
             Get.offAllNamed(AppRoute.home);
           });
@@ -93,7 +99,7 @@ class RegisterController extends GetxController {
     nameController.dispose();
     emailController.dispose();
     phoneController.dispose();
-    countryCodeController.dispose();
+    countryCodeController!.dispose();
     passwordController.dispose();
     confirmPasswordController.dispose();
     super.onClose();

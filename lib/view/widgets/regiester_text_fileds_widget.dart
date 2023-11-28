@@ -66,7 +66,7 @@ class RegsiterTextFieldsWidget extends StatelessWidget {
                   initialCountryCode: 'AE',
                   style: Fonts.mainStyleRegular,
                   onCountryChanged: (value) {
-                    controller.countryCodeController.text =
+                    controller.countryCodeController!.text =
                         "+${value.dialCode.toString()}";
                   },
                 ),

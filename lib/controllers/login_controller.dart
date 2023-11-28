@@ -5,6 +5,7 @@ import 'package:task/common/functions/snackbar.dart';
 import 'package:task/common/routes/pages.dart';
 import 'package:task/common/services/setting_services.dart';
 import 'package:task/model/models/login_parameter_model.dart';
+import 'package:task/model/models/set_user_parameter_model.dart';
 
 import '../model/data/reposoity_pattern.dart';
 
@@ -14,12 +15,11 @@ class LoginController extends GetxController {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
-  final AuthenticationUser authenticationUser =
-      AuthenticationUserimplemention();
+  final AuthenticationUser authenticationUser;
 
   bool showPassword = false;
 
-  // LoginController(this.authenticationUser);
+  LoginController(this.authenticationUser);
 
   showPassowrd() {
     showPassword = !showPassword;
@@ -50,7 +50,12 @@ class LoginController extends GetxController {
           subTitle: r.message!,
           isSuccess: true,
         );
-        Services.setUserData(r.toJson()).then((value) {
+        Services.setUser(
+          setUserParameterModel: SetUserParameterModel(
+            token: r.data!.token.toString(),
+            id: r.data!.id.toString(),
+          ),
+        ).then((value) {
           Future.delayed(const Duration(seconds: 1), () {
             Get.offAllNamed(AppRoute.home);
           });

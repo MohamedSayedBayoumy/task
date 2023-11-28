@@ -1,14 +1,19 @@
-class UserModel {
+class UsersModel {
   bool? success;
   String? message;
-  UserData? data;
+  List<Data>? data;
 
-  UserModel({this.success, this.message, this.data});
+  UsersModel({this.success, this.message, this.data});
 
-  UserModel.fromJson(Map<String, dynamic> json) {
+  UsersModel.fromJson(Map<String, dynamic> json) {
     success = json['success'];
     message = json['message'];
-    data = json['data'] != null ? UserData.fromJson(json['data']) : null;
+    if (json['data'] != null) {
+      data = <Data>[];
+      json['data'].forEach((v) {
+        data!.add(Data.fromJson(v));
+      });
+    }
   }
 
   Map<String, dynamic> toJson() {
@@ -16,38 +21,27 @@ class UserModel {
     data['success'] = success;
     data['message'] = message;
     if (this.data != null) {
-      data['data'] = this.data!.toJson();
+      data['data'] = this.data!.map((v) => v.toJson()).toList();
     }
     return data;
   }
 }
 
-class UserData {
+class Data {
   String? id;
   String? name;
   String? countryCode;
   String? phone;
   String? email;
-  String? token;
-  String? tokenExpiry;
 
-  UserData(
-      {this.id,
-      this.name,
-      this.countryCode,
-      this.phone,
-      this.email,
-      this.token,
-      this.tokenExpiry});
+  Data({this.id, this.name, this.countryCode, this.phone, this.email});
 
-  UserData.fromJson(Map<String, dynamic> json) {
+  Data.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     name = json['name'];
     countryCode = json['country_code'];
     phone = json['phone'];
     email = json['email'];
-    token = json['token'] ?? "";
-    tokenExpiry = json['token_expiry'] ?? "";
   }
 
   Map<String, dynamic> toJson() {
@@ -57,8 +51,6 @@ class UserData {
     data['country_code'] = countryCode;
     data['phone'] = phone;
     data['email'] = email;
-    data['token'] = token ?? "";
-    data['token_expiry'] = tokenExpiry ?? "";
     return data;
   }
 }
