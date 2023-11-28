@@ -24,6 +24,9 @@ class UpDateInformationController extends GetxController {
 
   final TextEditingController countryCodeController = TextEditingController();
 
+  final TextEditingController countryCodeNumberController =
+      TextEditingController();
+
   Future updateUser() async {
     if (formstate.currentState!.validate()) {
       showLoadingDialog();
@@ -32,7 +35,7 @@ class UpDateInformationController extends GetxController {
         data: UserData(
           email: emailController.text,
           name: nameController.text,
-          phone: phoneController.text,
+          phone: "+${countryCodeNumberController.text} ${phoneController.text}",
           countryCode: countryCodeController.text,
         ),
       );
