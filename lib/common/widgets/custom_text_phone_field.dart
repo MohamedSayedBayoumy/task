@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
-import 'package:intl_phone_field/phone_number.dart';
 
 import '../constants/colors.dart';
 import '../constants/fonts/fonts.dart';
@@ -12,13 +11,13 @@ class CustomTextPhoneField extends StatelessWidget {
   final TextEditingController? phoneController,
       codeCountryController,
       codeCountryNumberController;
-  final void Function(PhoneNumber)? onChanged;
+  final FocusNode? focusNode;
   const CustomTextPhoneField({
     super.key,
     required this.phoneController,
     this.codeCountryController,
     this.codeCountryNumberController,
-    this.onChanged,
+    this.focusNode,
   });
 
   @override
@@ -27,28 +26,23 @@ class CustomTextPhoneField extends StatelessWidget {
       padding:
           EdgeInsets.symmetric(vertical: Media.height(context, space: .015)),
       child: IntlPhoneField(
+        focusNode: focusNode!,
         controller: phoneController,
         onCountryChanged: (value) {
-          phoneController!.text = "0";
+          focusNode!.requestFocus();
+          phoneController!.text = "";
           codeCountryController!.text = value.code.toString();
           codeCountryNumberController!.text = "+${value.dialCode.toString()}";
         },
         initialCountryCode: codeCountryController?.text,
-        onChanged: onChanged,
         textInputAction: TextInputAction.next,
-        inputFormatters: [
-          FilteringTextInputFormatter.digitsOnly,
-        ],
         dropdownIcon: Icon(
           Icons.keyboard_arrow_down_rounded,
           color: AppColors.mainColor,
         ),
-        validator: (phone) {
-          if (phone!.number.isEmpty || phone.number == "") {
-            return "Invalid mobile number";
-          }
-          return "Invalid mobile number";
-        },
+        inputFormatters: [
+          FilteringTextInputFormatter.digitsOnly,
+        ],
         decoration: InputDecoration(
           counterText: "",
           hintText: "55994435",

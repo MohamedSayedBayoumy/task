@@ -21,7 +21,7 @@ showCustomSnackbar({
         subTitle,
         style: Fonts.subTitleSnakBarStyle,
       ),
-      duration: Duration(seconds: durationSeconds ?? 3),
+      duration: Duration(seconds: durationSeconds ?? 2),
       margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 40),
       snackPosition: SnackPosition.BOTTOM,
       backgroundColor: success ? AppColors.sucessColor : AppColors.failureColor,

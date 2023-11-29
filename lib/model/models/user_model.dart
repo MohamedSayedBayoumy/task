@@ -5,7 +5,11 @@ class UserModel {
   String? message;
   UserData? data;
 
-  UserModel({this.success, this.message, this.data});
+  UserModel({
+    this.success,
+    this.message,
+    this.data,
+  });
 
   UserModel.fromJson(Map<String, dynamic> json) {
     success = json['success'];

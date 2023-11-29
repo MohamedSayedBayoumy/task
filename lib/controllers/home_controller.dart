@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:task/common/constants/values/init_values.dart';
 
+import '../common/constants/values/init_values.dart';
 import '../common/eunm.dart';
 import '../common/functions/alert_loading.dart';
 import '../common/functions/snackbar.dart';

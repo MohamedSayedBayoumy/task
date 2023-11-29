@@ -1,6 +1,8 @@
 import 'package:get/get.dart';
-import 'package:task/controllers/login_controller.dart';
-import 'package:task/model/data/reposoity_pattern.dart';
+
+import '../../../controllers/login_controller.dart';
+import '../../../model/data/reposoity_pattern.dart';
+ 
 
 class LoginBinding extends Bindings {
   @override

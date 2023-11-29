@@ -41,6 +41,7 @@ class UpDateInformationScreen extends StatelessWidget {
                   },
                 ),
                 CustomTextPhoneField(
+                  focusNode: controller.focusNode,
                   phoneController: controller.phoneController,
                   codeCountryController: controller.countryCodeController,
                   codeCountryNumberController:

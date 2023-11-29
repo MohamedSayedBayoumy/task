@@ -36,6 +36,7 @@ class RegsiterTextFieldsWidget extends StatelessWidget {
                 codeCountryNumberController:
                     controller.countryNumberCodeController!,
                 phoneController: controller.phoneController,
+               focusNode: FocusNode(),
               ),
               CustomTextField(
                 controller: controller.emailController,

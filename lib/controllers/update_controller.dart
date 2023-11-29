@@ -27,6 +27,8 @@ class UpDateInformationController extends GetxController {
   final TextEditingController countryCodeNumberController =
       TextEditingController();
 
+  final FocusNode focusNode = FocusNode();
+
   bool hasUpdates = false;
 
   checkUpdates() {
@@ -40,7 +42,7 @@ class UpDateInformationController extends GetxController {
     } else {
       hasUpdates = false;
     }
-    update(); 
+    update();
   }
 
   Future updateUser() async {
@@ -91,6 +93,7 @@ class UpDateInformationController extends GetxController {
 
   @override
   void onClose() {
+    focusNode.dispose();
     nameController.dispose();
     emailController.dispose();
     phoneController.dispose();
