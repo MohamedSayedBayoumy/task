@@ -27,6 +27,22 @@ class UpDateInformationController extends GetxController {
   final TextEditingController countryCodeNumberController =
       TextEditingController();
 
+  bool hasUpdates = false;
+
+  checkUpdates() {
+    if (nameController.text != user.data!.name ||
+        emailController.text != user.data!.email! ||
+        countryCodeController.text != user.data!.countryCode! ||
+        phoneController.text != user.data!.phone!.split(" ")[1].trim() ||
+        countryCodeNumberController.text !=
+            user.data!.phone!.split(" ")[0].trim()) {
+      hasUpdates = true;
+    } else {
+      hasUpdates = false;
+    }
+    update(); 
+  }
+
   Future updateUser() async {
     if (formstate.currentState!.validate()) {
       showLoadingDialog();

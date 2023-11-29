@@ -9,6 +9,7 @@ class CustomButton extends StatelessWidget {
   final double? width;
   final Color? textColor, borderColor, backgroundColor;
   final void Function()? onPressed;
+  final bool? enable;
 
   const CustomButton({
     super.key,
@@ -18,6 +19,7 @@ class CustomButton extends StatelessWidget {
     this.width,
     required this.onPressed,
     this.borderColor,
+    this.enable = true,
   });
 
   @override
@@ -26,7 +28,7 @@ class CustomButton extends StatelessWidget {
       width: width ?? Media.width(context),
       height: Media.height(context, space: .055),
       child: ElevatedButton(
-        onPressed: onPressed,
+        onPressed: enable! ? onPressed : () {},
         style: ElevatedButton.styleFrom(
           elevation: 0.0,
           shape: RoundedRectangleBorder(
@@ -34,7 +36,9 @@ class CustomButton extends StatelessWidget {
             borderRadius:
                 BorderRadius.circular(8), // Set your desired border radius
           ),
-          backgroundColor: backgroundColor ?? AppColors.mainColor,
+          backgroundColor: enable == true
+              ? backgroundColor ?? AppColors.mainColor
+              : AppColors.mainColor.withOpacity(.5),
         ),
         child: Text(
           text,

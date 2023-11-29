@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:intl_phone_field/phone_number.dart';
 
@@ -28,18 +29,22 @@ class CustomTextPhoneField extends StatelessWidget {
       child: IntlPhoneField(
         controller: phoneController,
         onCountryChanged: (value) {
-          codeCountryController!.text = value.code;
-          codeCountryNumberController!.text = "+${value.dialCode}";
+          phoneController!.text = "0";
+          codeCountryController!.text = value.code.toString();
+          codeCountryNumberController!.text = "+${value.dialCode.toString()}";
         },
         initialCountryCode: codeCountryController?.text,
         onChanged: onChanged,
         textInputAction: TextInputAction.next,
+        inputFormatters: [
+          FilteringTextInputFormatter.digitsOnly,
+        ],
         dropdownIcon: Icon(
           Icons.keyboard_arrow_down_rounded,
           color: AppColors.mainColor,
         ),
         validator: (phone) {
-          if (phone!.number.isEmpty) {
+          if (phone!.number.isEmpty || phone.number == "") {
             return "Invalid mobile number";
           }
           return "Invalid mobile number";

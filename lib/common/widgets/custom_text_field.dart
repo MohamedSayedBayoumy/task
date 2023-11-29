@@ -1,31 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:task/common/constants/colors.dart';
-import 'package:task/common/constants/fonts/fonts.dart';
-import 'package:task/common/constants/text_field_style.dart';
-import 'package:task/common/functions/media_query.dart';
+
+import '../constants/colors.dart';
+import '../constants/fonts/fonts.dart';
+import '../constants/text_field_style.dart';
+import '../functions/media_query.dart';
+ 
 
 class CustomTextField extends StatelessWidget {
   final TextEditingController? controller;
   final String? hinText;
   final bool? obscureText;
   final String? Function(String?)? valid;
-  final String? Function(String?)? onChange;
   final TextInputType? keyboardType;
   final TextInputAction? textInputAction;
-  final List<TextInputFormatter>? inputFormatters;
   final void Function()? onPressedSuffixIcon;
   final bool? enableSuffixIcon;
 
   const CustomTextField({
     Key? key,
     required this.controller,
-    this.inputFormatters,
     this.obscureText,
     this.textInputAction,
     this.onPressedSuffixIcon,
     this.keyboardType,
-    this.onChange,
     this.hinText,
     this.valid,
     this.enableSuffixIcon = false,
@@ -46,10 +44,8 @@ class CustomTextField extends StatelessWidget {
         textInputAction: textInputAction ?? TextInputAction.next,
         textAlign: TextAlign.center,
         keyboardType: keyboardType,
-        onChanged: onChange,
         validator: valid,
         controller: controller,
-        inputFormatters: inputFormatters,
         maxLengthEnforcement: MaxLengthEnforcement.truncateAfterCompositionEnds,
         decoration: InputDecoration(
           suffixIcon: enableSuffixIcon == true

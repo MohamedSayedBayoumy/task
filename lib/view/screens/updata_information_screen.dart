@@ -27,6 +27,9 @@ class UpDateInformationScreen extends StatelessWidget {
         ),
         child: GetBuilder<UpDateInformationController>(
           builder: (controller) => Form(
+            onChanged: () {
+              controller.checkUpdates();
+            },
             key: controller.formstate,
             child: Column(
               children: [
@@ -54,6 +57,7 @@ class UpDateInformationScreen extends StatelessWidget {
                   padding: const EdgeInsets.only(top: 15),
                   child: CustomButton(
                     text: "Save",
+                    enable: controller.hasUpdates,
                     onPressed: () {
                       controller.updateUser();
                     },
