@@ -4,8 +4,6 @@ import 'package:get/get.dart';
 import 'common/routes/routes.dart';
 import 'common/services/setting_services.dart';
 
- 
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 

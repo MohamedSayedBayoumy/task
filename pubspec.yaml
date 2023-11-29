@@ -41,6 +41,7 @@ dependencies:
   device_preview: 
   intl_phone_field: 
   shared_preferences:
+  get_it:
 
 dev_dependencies:
   flutter_test:
